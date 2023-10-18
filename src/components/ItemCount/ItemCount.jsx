@@ -5,24 +5,25 @@ const ItemCount = () => {
   const [count, setCount] = useState(0); 
   const { cartItems, setCartItems } = useContext(CartContext);
 
-  const handleAddProduct = () => {
-    setCartItems(cartItems + 1);
+  const increment = () => {
     setCount(count + 1);
+    setCartItems(cartItems + 1);
   };
-  const handleRemoveProduct = () => {
+
+  const decrement = () => {
     if (cartItems > 0) {
-      setCartItems(cartItems - 1);
       setCount(count - 1);
+      setCartItems(cartItems - 1);
     }
   };
 
   return (
     <div>
-      <button onClick={handleRemoveProduct}>-</button>
+      <button onClick={decrement}>-</button>
       <label style={{ margin: 10, fontSize: "1.5rem", fontWeight: "bold" }}>
         {count}
       </label>
-      <button onClick={handleAddProduct}>+</button>
+      <button onClick={increment}>+</button>
     </div>
   );
 };
